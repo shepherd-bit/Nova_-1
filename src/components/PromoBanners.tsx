@@ -76,10 +76,12 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
           </div>
 
           <div className="relative z-10 flex items-center gap-3 mt-6">
-            <div
-              className={`w-[56%] aspect-[4/3] rounded-[20px] bg-gradient-to-br ${glasses.images[0].gradient} grid place-items-center text-5xl border border-black/10 shadow-md`}
-            >
-              {glasses.images[0].emoji}
+            <div className="w-[56%] aspect-[4/3] rounded-[20px] overflow-hidden bg-black/5 border border-black/10 shadow-md relative">
+              <img
+                src="./promo-banner-image/sales-rayban.jpg"
+                alt={glasses.name}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex-1">
               <p className="font-bold text-[14px] text-[#111]">From $329</p>
