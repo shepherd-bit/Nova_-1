@@ -12,10 +12,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 2413,
     images: [
-      { gradient: "from-[#D6D6D6] to-[#A8A8A8]", emoji: "📱", label: "Front" },
-      { gradient: "from-[#2a2a2a] to-[#6a6a6a]", emoji: "📱", label: "Back" },
-      { gradient: "from-[#c9c9c9] to-[#ececec]", emoji: "📱", label: "Side" },
-      { gradient: "from-[#f0f0f0] to-[#c2c2c2]", emoji: "📱", label: "Detail" }
+      { src: "", label: "Front" },
+      { src: "", label: "Back" },
+      { src: "", label: "Side" },
+      { src: "", label: "Detail" }
     ],
     specs: {
       Chip: "A17 Pro",
@@ -35,7 +35,7 @@ export const products: Product[] = [
     isNew: true,
     isBestSeller: true,
     isPromo: true
-  },
+  }
   {
     id: "p2",
     name: "Galaxy S24 Ultra",
