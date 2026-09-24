@@ -33,14 +33,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div
         className={`relative rounded-[20px] md:rounded-[24px] overflow-hidden bg-gradient-to-br ${
           product.images[0].gradient
-        } ${isTall ? 'aspect-[3/4]' : isLarge ? 'aspect-[4/3]' : 'aspect-[4/3]'} grid place-items-center`}
+        } ${isTall ? 'aspect-[3/4]' : isLarge ? 'aspect-[4/3]' : 'aspect-[4/3]'} flex items-center justify-center`}
       >
-        <div className="text-[56px] md:text-[64px] transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 select-none">
-          {product.images[0].emoji}
+        <div className="w-full h-full relative overflow-hidden flex items-center justify-center">
+          <img
+            src={product.images[0].src}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 select-none"
+          />
         </div>
 
         {/* Top Badges */}
-        <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+        <div className="absolute top-3 left-3 flex gap-1.5 flex-wrap z-10">
           {product.isNew && (
             <span className="bg-[#E8FF5A] text-black text-[10px] font-bold px-2.5 py-1 rounded-full tracking-widest shadow-sm">
               NEW
@@ -52,7 +56,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           )}
           {product.originalPrice && (
-            <span className="bg-[#6C5CFF] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+            <span className="bg-[#6C5CFF] text-white text-[10px] font-bold px-2.5 py-1 rounded-full tracking-widest shadow-sm">
               -{Math.round((1 - product.price / product.originalPrice) * 100)}%
             </span>
           )}
@@ -62,14 +66,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <button
           type="button"
           onClick={(e) => onToggleWishlist(product.id, e)}
-          className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur border border-black/10 grid place-items-center shadow hover:scale-105 active:scale-95 transition"
+          className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur border border-black/10 grid place-items-center shadow hover:scale-105 active:scale-95 transition z-10"
           aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
         >
           <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-black text-black' : 'text-[#111]'}`} />
         </button>
 
         {/* Bottom Floating Bar */}
-        <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center">
+        <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center z-10">
           <span className="bg-white/90 backdrop-blur text-[11px] font-bold px-2.5 py-1 rounded-full border border-black/10">
             {product.brand}
           </span>

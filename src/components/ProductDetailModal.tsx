@@ -90,9 +90,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   onClick={() => setActiveImageIndex(i)}
                   className={`rounded-[20px] aspect-square border-2 overflow-hidden transition-all ${
                     activeImageIndex === i ? 'border-[#111] scale-105' : 'border-transparent opacity-70 hover:opacity-100'
-                  } bg-gradient-to-br ${img.gradient} grid place-items-center text-3xl shadow-sm cursor-pointer`}
+                  } bg-gradient-to-br ${img.gradient} relative flex items-center justify-center shadow-sm cursor-pointer`}
                 >
-                  {img.emoji}
+                  <img src={img.src} alt={`${product.name} ${i}`} className="w-full h-full object-cover select-none" />
                 </button>
               ))}
             </div>
@@ -100,17 +100,21 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             {/* Main Stage */}
             <div className="flex-1">
               <div
-                className={`rounded-[32px] bg-gradient-to-br ${currentImage.gradient} aspect-[4/3] md:aspect-square relative overflow-hidden group shadow-[0_20px_60px_rgba(0,0,0,0.06)]`}
+                className={`rounded-[32px] bg-gradient-to-br ${currentImage.gradient} aspect-[4/3] md:aspect-square relative overflow-hidden group shadow-[0_20px_60px_rgba(0,0,0,0.06)] flex items-center justify-center`}
               >
-                <div className="absolute inset-0 grid place-items-center text-[120px] md:text-[160px] select-none transition-transform duration-700 group-hover:scale-110">
-                  {currentImage.emoji}
+                <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden">
+                  <img
+                    src={currentImage.src}
+                    alt={product.name}
+                    className="w-full h-full object-cover select-none transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
 
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur rounded-full px-3 py-1 text-[11px] font-medium tracking-widest text-[#111] shadow-sm">
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur rounded-full px-3 py-1 text-[11px] font-medium tracking-widest text-[#111] shadow-sm z-10">
                   0{activeImageIndex + 1} / 0{product.images.length} • {currentImage.label}
                 </div>
 
-                <div className="absolute top-4 right-4 flex gap-2">
+                <div className="absolute top-4 right-4 flex gap-2 z-10">
                   {product.isNew && (
                     <span className="bg-[#E8FF5A] text-black text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
                       NEW
@@ -131,11 +135,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     key={i}
                     type="button"
                     onClick={() => setActiveImageIndex(i)}
-                    className={`min-w-[72px] h-[72px] rounded-[18px] border-2 ${
+                    className={`min-w-[72px] h-[72px] rounded-[18px] border-2 overflow-hidden ${
                       activeImageIndex === i ? 'border-black' : 'border-black/10'
-                    } bg-gradient-to-br ${img.gradient} grid place-items-center text-2xl`}
+                    } bg-gradient-to-br ${img.gradient} relative flex items-center justify-center`}
                   >
-                    {img.emoji}
+                    <img src={img.src} alt={`${product.name} ${i}`} className="w-full h-full object-cover select-none" />
                   </button>
                 ))}
               </div>
@@ -339,9 +343,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 className="text-left group cursor-pointer"
               >
                 <div
-                  className={`rounded-[24px] aspect-[4/3] bg-gradient-to-br ${rel.images[0].gradient} grid place-items-center text-5xl transition-transform group-hover:scale-[1.02] shadow-sm`}
+                  className={`rounded-[24px] aspect-[4/3] bg-gradient-to-br ${rel.images[0].gradient} overflow-hidden relative flex items-center justify-center transition-transform group-hover:scale-[1.02] shadow-sm`}
                 >
-                  {rel.images[0].emoji}
+                  <img src={rel.images[0].src} alt={rel.name} className="w-full h-full object-cover select-none" />
                 </div>
                 <p className="mt-3 text-[13px] font-bold text-[#111] truncate">{rel.name}</p>
                 <p className="text-[13px] text-black/60">${rel.price}</p>

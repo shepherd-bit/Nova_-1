@@ -1,6 +1,7 @@
 export interface ProductImage {
   gradient: string;
   emoji: string;
+  src?: string;
   label: string;
 }
 
