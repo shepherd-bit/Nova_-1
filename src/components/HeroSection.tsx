@@ -92,10 +92,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="absolute left-[8%] top-[8%] w-[72%] md:w-[68%] tilt-1 cursor-pointer transition-transform duration-500 hover:rotate-0 hover:scale-105 z-10"
           >
             <div className="rounded-[32px] bg-white border border-black/10 shadow-[0_30px_80px_rgba(0,0,0,0.12)] p-4">
-              <div
-                className={`rounded-[24px] aspect-[4/3] bg-gradient-to-br ${iphone.images[0].gradient} grid place-items-center text-[96px] select-none`}
-              >
-                {iphone.images[0].emoji}
+              <div className="rounded-[24px] aspect-[4/3] overflow-hidden bg-black/5 relative">
+                <img
+                  src="./hero-images/smartphone-1.jpg"
+                  alt={iphone.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-3 flex items-center justify-between">
                 <div>
@@ -125,10 +127,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="absolute right-[2%] top-[30%] w-[64%] md:w-[60%] tilt-2 cursor-pointer transition-transform duration-500 hover:rotate-0 hover:scale-105 z-20"
           >
             <div className="rounded-[32px] bg-[#111] text-white border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.25)] p-4">
-              <div
-                className={`rounded-[24px] aspect-[4/3] bg-gradient-to-br ${glasses.images[0].gradient} grid place-items-center text-[84px] select-none`}
-              >
-                {glasses.images[0].emoji}
+              <div className="rounded-[24px] aspect-[4/3] overflow-hidden bg-white/5 relative">
+                <img
+                  src="./hero-images/meta-glasses.jpg"
+                  alt={glasses.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="p-3 flex items-center justify-between">
                 <div>
@@ -148,8 +152,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="absolute left-[20%] bottom-[4%] w-[58%] md:w-[52%] tilt-3 cursor-pointer transition-transform duration-500 hover:rotate-0 hover:scale-105 z-30"
           >
             <div className="rounded-[32px] bg-[#E8FF5A] border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-3">
-              <div className="rounded-[20px] aspect-[1/1] bg-gradient-to-br from-white to-[#E8FF5A] grid place-items-center text-[64px] select-none">
-                🎧
+              <div className="rounded-[20px] aspect-[1/1] overflow-hidden bg-black/5 relative">
+                <img
+                  src="./hero-images/headphones.jpg"
+                  alt="Audio Week"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="px-2 py-2">
                 <p className="font-bold text-[13px] text-[#111]">Audio Week • Curated</p>
