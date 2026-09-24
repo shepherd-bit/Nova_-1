@@ -32,8 +32,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-30 backdrop-blur-xl bg-[#FAF9F6]/75 border-b border-black/[0.06]">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-[72px] flex items-center justify-between gap-6">
+    <>
+      {/* Reserve the navbar height while the fixed header stays visible over the page. */}
+      <div aria-hidden="true" className="h-[72px]" />
+
+      <header className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-xl bg-[#FAF9F6]/95 border-b border-black/[0.06]">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-[72px] flex items-center justify-between gap-6">
         {/* Left: Brand & Nav */}
         <div className="flex items-center gap-8">
           <button
@@ -212,7 +216,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
         </div>
-      )}
-    </header>
+        )}
+      </header>
+    </>
   );
 };

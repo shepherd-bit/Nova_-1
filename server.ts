@@ -137,8 +137,8 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`NOVA• Server running at http://0.0.0.0:${PORT}`);
+  app.listen(PORT, "localhost", () => {
+  console.log(`NOVA• Server running at http://localhost:${PORT}`);
   });
 }
 
