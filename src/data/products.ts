@@ -47,10 +47,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewsCount: 1822,
     images: [
-      { gradient: "from-[#2E2E3A] to-[#6C5CFF]", emoji: "📱", label: "Front" },
-      { gradient: "from-[#1a1a2e] to-[#3a3a5a]", emoji: "📱", label: "Titanium Gray" },
-      { gradient: "from-[#3a3a5a] to-[#8a8ac0]", emoji: "📱", label: "Side" },
-      { gradient: "from-[#6C5CFF] to-[#E8FF5A]", emoji: "📱", label: "Detail" }
+      { gradient: "from-[#2E2E3A] to-[#6C5CFF]", src: "./products/p2.jpg", emoji: "📱", label: "Front" },
+      { gradient: "from-[#1a1a2e] to-[#3a3a5a]", src: "./products/p2.jpg", emoji: "📱", label: "Titanium Gray" },
+      { gradient: "from-[#3a3a5a] to-[#8a8ac0]", src: "./products/p2.jpg", emoji: "📱", label: "Side" },
+      { gradient: "from-[#6C5CFF] to-[#E8FF5A]", src: "./products/p2.jpg", emoji: "📱", label: "Detail" }
     ],
     specs: {
       Chip: "Snapdragon 8 Gen 3",
