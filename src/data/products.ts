@@ -82,10 +82,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 5421,
     images: [
-      { gradient: "from-[#EAEAEA] to-[#CFCFCF]", emoji: "🎧", label: "Front" },
-      { gradient: "from-[#111] to-[#444]", emoji: "🎧", label: "Black" },
-      { gradient: "from-[#d9d9d9] to-[#f5f5f5]", emoji: "🎧", label: "Fold" },
-      { gradient: "from-[#6C5CFF]/20 to-[#E8FF5A]/20", emoji: "🎧", label: "Case" }
+      { gradient: "from-[#EAEAEA] to-[#CFCFCF]", src: "./products/p3.jpg", emoji: "🎧", label: "Front" },
+      { gradient: "from-[#111] to-[#444]", src: "./products/p3.jpg", emoji: "🎧", label: "Black" },
+      { gradient: "from-[#d9d9d9] to-[#f5f5f5]", src: "./products/p3.jpg", emoji: "🎧", label: "Fold" },
+      { gradient: "from-[#6C5CFF]/20 to-[#E8FF5A]/20", src: "./products/p3.jpg", emoji: "🎧", label: "Case" }
     ],
     specs: {
       Driver: "30mm carbon fiber",
@@ -116,10 +116,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewsCount: 3210,
     images: [
-      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", emoji: "🎧", label: "Black" },
-      { gradient: "from-[#F5F1E8] to-[#D6CFC0]", emoji: "🎧", label: "Sandstone" },
-      { gradient: "from-[#2a2a2a] to-[#5a5a5a]", emoji: "🎧", label: "Side" },
-      { gradient: "from-[#E8FF5A] to-[#6C5CFF]", emoji: "🎧", label: "Detail" }
+      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", src: "./products/p4.jpg", emoji: "🎧", label: "Black" },
+      { gradient: "from-[#F5F1E8] to-[#D6CFC0]", src: "./products/p4.jpg", emoji: "🎧", label: "Sandstone" },
+      { gradient: "from-[#2a2a2a] to-[#5a5a5a]", src: "./products/p4.jpg", emoji: "🎧", label: "Side" },
+      { gradient: "from-[#E8FF5A] to-[#6C5CFF]", src: "./products/p4.jpg", emoji: "🎧", label: "Detail" }
     ],
     specs: {
       Audio: "CustomTune spatial",
@@ -149,10 +149,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 893,
     images: [
-      { gradient: "from-[#C0C0C0] to-[#8A8A8A]", emoji: "💻", label: "Open" },
-      { gradient: "from-[#2a2a2a] to-[#0a0a0a]", emoji: "💻", label: "Space Black" },
-      { gradient: "from-[#e0e0e0] to-[#a0a0a0]", emoji: "💻", label: "Keyboard" },
-      { gradient: "from-[#6C5CFF] to-[#111]", emoji: "💻", label: "Performance" }
+      { gradient: "from-[#C0C0C0] to-[#8A8A8A]", src: "./products/p5.jpg", emoji: "💻", label: "Open" },
+      { gradient: "from-[#2a2a2a] to-[#0a0a0a]", src: "./products/p5.jpg", emoji: "💻", label: "Space Black" },
+      { gradient: "from-[#e0e0e0] to-[#a0a0a0]", src: "./products/p5.jpg", emoji: "💻", label: "Keyboard" },
+      { gradient: "from-[#6C5CFF] to-[#111]", src: "./products/p5.jpg", emoji: "💻", label: "Performance" }
     ],
     specs: {
       Chip: "M3 Max 16-core",
@@ -182,10 +182,10 @@ export const products: Product[] = [
     rating: 4.7,
     reviewsCount: 412,
     images: [
-      { gradient: "from-[#E8E8E8] to-[#B0B0B0]", emoji: "🖥️", label: "Front" },
-      { gradient: "from-[#D1D1D1] to-[#8E8E8E]", emoji: "🖥️", label: "Hinge" },
-      { gradient: "from-[#f5f5f5] to-[#c5c5c5]", emoji: "🖥️", label: "Studio Mode" },
-      { gradient: "from-[#6C5CFF]/30 to-[#111]/10", emoji: "🖥️", label: "Touch" }
+      { gradient: "from-[#E8E8E8] to-[#B0B0B0]", src: "./products/p6.jpg", emoji: "🖥️", label: "Front" },
+      { gradient: "from-[#D1D1D1] to-[#8E8E8E]", src: "./products/p6.jpg", emoji: "🖥️", label: "Hinge" },
+      { gradient: "from-[#f5f5f5] to-[#c5c5c5]", src: "./products/p6.jpg", emoji: "🖥️", label: "Studio Mode" },
+      { gradient: "from-[#6C5CFF]/30 to-[#111]/10", src: "./products/p6.jpg", emoji: "🖥️", label: "Touch" }
     ],
     specs: {
       Display: '28" PixelSense 4500x3000 Touch',
@@ -215,10 +215,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewsCount: 2103,
     images: [
-      { gradient: "from-[#F0F0F0] to-[#B8B8B8]", emoji: "🥽", label: "Headset" },
-      { gradient: "from-[#E8FF5A] to-[#6C5CFF]", emoji: "🥽", label: "Mixed Reality" },
-      { gradient: "from-[#111] to-[#444]", emoji: "🥽", label: "Controllers" },
-      { gradient: "from-[#fafafa] to-[#d0d0d0]", emoji: "🥽", label: "Side" }
+      { gradient: "from-[#F0F0F0] to-[#B8B8B8]", src: "./products/p7.jpg", emoji: "🥽", label: "Headset" },
+      { gradient: "from-[#E8FF5A] to-[#6C5CFF]", src: "./products/p7.jpg", emoji: "🥽", label: "Mixed Reality" },
+      { gradient: "from-[#111] to-[#444]", src: "./products/p7.jpg", emoji: "🥽", label: "Controllers" },
+      { gradient: "from-[#fafafa] to-[#d0d0d0]", src: "./products/p7.jpg", emoji: "🥽", label: "Side" }
     ],
     specs: {
       Optics: "4K+ Infinite Display",
@@ -247,10 +247,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 3321,
     images: [
-      { gradient: "from-[#C9A86A] to-[#8A6D3B]", emoji: "⌚", label: "Titanium" },
-      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", emoji: "⌚", label: "Alpine Loop" },
-      { gradient: "from-[#E8FF5A] to-[#C9A86A]", emoji: "⌚", label: "Action" },
-      { gradient: "from-[#111] to-[#2a2a2a]", emoji: "⌚", label: "Night" }
+      { gradient: "from-[#C9A86A] to-[#8A6D3B]", src: "./products/p8.jpg", emoji: "⌚", label: "Titanium" },
+      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", src: "./products/p8.jpg", emoji: "⌚", label: "Alpine Loop" },
+      { gradient: "from-[#E8FF5A] to-[#C9A86A]", src: "./products/p8.jpg", emoji: "⌚", label: "Action" },
+      { gradient: "from-[#111] to-[#2a2a2a]", src: "./products/p8.jpg", emoji: "⌚", label: "Night" }
     ],
     specs: {
       Case: "49mm Titanium",
@@ -280,10 +280,10 @@ export const products: Product[] = [
     rating: 4.6,
     reviewsCount: 987,
     images: [
-      { gradient: "from-[#1A1A1A] to-[#3A3A3A]", emoji: "🕶️", label: "Wayfarer" },
-      { gradient: "from-[#E8FF5A] to-[#6C5CFF]", emoji: "🕶️", label: "AI POV" },
-      { gradient: "from-[#2a2a2a] to-[#5a5a5a]", emoji: "🕶️", label: "Charging Case" },
-      { gradient: "from-[#111] to-[#6C5CFF]", emoji: "🕶️", label: "Live" }
+      { gradient: "from-[#1A1A1A] to-[#3A3A3A]", src: "./products/p9.jpg", emoji: "🕶️", label: "Wayfarer" },
+      { gradient: "from-[#E8FF5A] to-[#6C5CFF]", src: "./products/p9.jpg", emoji: "🕶️", label: "AI POV" },
+      { gradient: "from-[#2a2a2a] to-[#5a5a5a]", src: "./products/p9.jpg", emoji: "🕶️", label: "Charging Case" },
+      { gradient: "from-[#111] to-[#6C5CFF]", src: "./products/p9.jpg", emoji: "🕶️", label: "Live" }
     ],
     specs: {
       Camera: "12MP ultra-wide",
@@ -314,10 +314,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 7211,
     images: [
-      { gradient: "from-[#FFFFFF] to-[#D0D0D0]", emoji: "🎮", label: "Console" },
-      { gradient: "from-[#111] to-[#444]", emoji: "🎮", label: "DualSense" },
-      { gradient: "from-[#E8FF5A] to-[#fff]", emoji: "🎮", label: "Games" },
-      { gradient: "from-[#6C5CFF] to-[#111]", emoji: "🎮", label: "Bundle" }
+      { gradient: "from-[#FFFFFF] to-[#D0D0D0]", src: "./products/p10.jpg", emoji: "🎮", label: "Console" },
+      { gradient: "from-[#111] to-[#444]", src: "./products/p10.jpg", emoji: "🎮", label: "DualSense" },
+      { gradient: "from-[#E8FF5A] to-[#fff]", src: "./products/p10.jpg", emoji: "🎮", label: "Games" },
+      { gradient: "from-[#6C5CFF] to-[#111]", src: "./products/p10.jpg", emoji: "🎮", label: "Bundle" }
     ],
     specs: {
       CPU: "AMD Zen 2 8-core",
@@ -346,10 +346,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewsCount: 543,
     images: [
-      { gradient: "from-[#FF6B6B] to-[#FF8E53]", emoji: "🖥️", label: "Pink" },
-      { gradient: "from-[#4ECDC4] to-[#44A08D]", emoji: "🖥️", label: "Green" },
-      { gradient: "from-[#6C5CFF] to-[#8A7DFF]", emoji: "🖥️", label: "Purple" },
-      { gradient: "from-[#E8FF5A] to-[#FFF59D]", emoji: "🖥️", label: "Yellow" }
+      { gradient: "from-[#FF6B6B] to-[#FF8E53]", src: "./products/p11.jpg", emoji: "🖥️", label: "Pink" },
+      { gradient: "from-[#4ECDC4] to-[#44A08D]", src: "./products/p11.jpg", emoji: "🖥️", label: "Green" },
+      { gradient: "from-[#6C5CFF] to-[#8A7DFF]", src: "./products/p11.jpg", emoji: "🖥️", label: "Purple" },
+      { gradient: "from-[#E8FF5A] to-[#FFF59D]", src: "./products/p11.jpg", emoji: "🖥️", label: "Yellow" }
     ],
     specs: {
       Chip: "M3 8-core",
