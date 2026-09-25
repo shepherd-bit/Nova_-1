@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, ShoppingBag } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface NavbarProps {
   searchQuery: string;
@@ -30,10 +31,20 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Reserve the navbar height while the fixed header stays visible over the page. */}
       <div aria-hidden="true" className="h-[72px]" />
 
-      <header className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-xl bg-[#FAF9F6]/95 border-b border-black/[0.06]">
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+        className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-xl bg-[#FAF9F6]/95 border-b border-black/[0.06]"
+      >
         <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-[72px] flex items-center justify-between gap-6">
           {/* Left: Brand Logo */}
-          <div className="flex items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="flex items-center"
+          >
             <button
               type="button"
               onClick={onResetToHome}
@@ -46,10 +57,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 NOVA•
               </span>
             </button>
-          </div>
+          </motion.div>
 
           {/* Center: Search input */}
-          <div className="flex-1 max-w-[520px] flex items-center">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex-1 max-w-[520px] flex items-center"
+          >
             <div className="w-full h-11 rounded-full bg-white border border-black/10 flex items-center px-4 gap-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)] focus-within:border-black/30 transition">
               <Search className="w-4 h-4 text-black/40" />
               <input
@@ -63,10 +79,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 ⌘ K
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Cart Action */}
-          <div className="flex items-center gap-2">
+          <motion.div 
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex items-center gap-2"
+          >
             <button
               type="button"
               onClick={onOpenCart}
@@ -78,9 +99,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {cartCount}
               </span>
             </button>
-          </div>
+          </motion.div>
         </div>
-      </header>
+      </motion.header>
     </>
   );
 };
