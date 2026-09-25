@@ -1,4 +1,5 @@
 export interface ProductImage {
+  url?: string;
   gradient: string;
   emoji: string;
   src?: string;
