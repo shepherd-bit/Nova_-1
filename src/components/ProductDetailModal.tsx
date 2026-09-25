@@ -260,11 +260,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               <button
                 type="button"
-                onClick={() => {
-                  if (!isAddedToCart) onAddToCart(product, activeColorIndex, quantity);
-                }}
-                disabled={isAddedToCart}
-                className={`flex-1 h-[56px] rounded-full font-bold tracking-wide transition flex items-center justify-center gap-2 shadow-sm hover:scale-[1.01] active:scale-[0.99] disabled:cursor-default ${
+                onClick={() => onAddToCart(product, activeColorIndex, quantity)}
+                className={`flex-1 h-[56px] rounded-full font-bold tracking-wide transition flex items-center justify-center gap-2 shadow-sm hover:scale-[1.01] active:scale-[0.99] cursor-pointer ${
                   isAddedToCart ? 'bg-[#22C55E] text-white hover:bg-[#16A34A]' : 'bg-[#111] text-white hover:bg-black'
                 }`}
                 aria-pressed={isAddedToCart}

@@ -168,6 +168,22 @@ export default function App() {
     showToast('Item removed from cart');
   };
 
+  // Toggle a product variant in the cart from a product card or detail button.
+  const handleToggleCart = (product: Product, colorIndex = 0, qty = 1) => {
+    const colorName = product.colors[colorIndex]?.name || product.colors[0]?.name;
+    if (!colorName) return;
+
+    if (isVariantInCart(product.id, colorName)) {
+      setCart((prev) =>
+        prev.filter((item) => !(item.id === product.id && item.color === colorName))
+      );
+      showToast(`${product.name} removed from cart`);
+      return;
+    }
+
+    handleAddToCart(product, colorIndex, qty);
+  };
+
   // Clear single filter
   const handleClearFilter = (key: keyof FilterState, value?: any) => {
     setFilters((prev) => {
@@ -334,7 +350,7 @@ export default function App() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           onToggleWishlist={handleToggleWishlist}
-          onAddToCart={handleAddToCart}
+          onAddToCart={handleToggleCart}
           onBuyNow={handleBuyNow}
           onSelectRelated={(p) => setSelectedProduct(p)}
         />
@@ -446,7 +462,7 @@ export default function App() {
         products={bestSellerProducts}
         wishlist={wishlist}
         onToggleWishlist={handleToggleWishlist}
-        onAddToCart={handleAddToCart}
+        onAddToCart={handleToggleCart}
         isVariantInCart={isVariantInCart}
         onSelectProduct={(p) => {
           setSelectedProduct(p);
@@ -459,7 +475,7 @@ export default function App() {
         products={newArrivalProducts}
         wishlist={wishlist}
         onToggleWishlist={handleToggleWishlist}
-        onAddToCart={handleAddToCart}
+        onAddToCart={handleToggleCart}
         isVariantInCart={isVariantInCart}
         onSelectProduct={(p) => {
           setSelectedProduct(p);
@@ -489,7 +505,7 @@ export default function App() {
         onToggleOpen={() => setIsInventoryCatalogOpen((prev) => !prev)}
         onOpenFilterDrawer={() => setIsFilterDrawerOpen(true)}
         onToggleWishlist={handleToggleWishlist}
-        onAddToCart={handleAddToCart}
+        onAddToCart={handleToggleCart}
         isVariantInCart={isVariantInCart}
         onSelectProduct={(p) => {
           setSelectedProduct(p);

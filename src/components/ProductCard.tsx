@@ -84,12 +84,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              if (!isAddedToCart) onAddToCart(product);
+              onAddToCart(product);
             }}
-            disabled={isAddedToCart}
-            className={`w-9 h-9 rounded-full text-white grid place-items-center transition-all shadow-md disabled:cursor-default ${
+            className={`w-9 h-9 rounded-full text-white grid place-items-center transition-all shadow-md cursor-pointer ${
               isAddedToCart
-                ? 'bg-[#22C55E] opacity-100 translate-y-0'
+                ? 'bg-[#22C55E] opacity-100 translate-y-0 hover:scale-105 active:scale-95'
                 : 'bg-[#111] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 hover:scale-105 active:scale-95'
             }`}
             aria-label={isAddedToCart ? 'Added to cart' : 'Add to cart'}
