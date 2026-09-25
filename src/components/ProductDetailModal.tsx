@@ -11,6 +11,7 @@ interface ProductDetailModalProps {
   onAddToCart: (product: Product, colorIndex?: number, qty?: number) => void;
   onBuyNow: (product: Product, colorIndex: number, qty: number) => void;
   onSelectRelated: (product: Product) => void;
+  isVariantInCart: (productId: string, colorName: string) => boolean;
 }
 
 export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
@@ -22,6 +23,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onAddToCart,
   onBuyNow,
   onSelectRelated,
+  isVariantInCart,
 }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [activeColorIndex, setActiveColorIndex] = useState(0);
@@ -30,6 +32,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   const isWishlisted = wishlist.includes(product.id);
   const currentImage = product.images[activeImageIndex] || product.images[0];
   const currentColor = product.colors[activeColorIndex] || product.colors[0];
+  const isAddedToCart = isVariantInCart(product.id, currentColor.name);
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#111] antialiased">
@@ -257,10 +260,24 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               <button
                 type="button"
-                onClick={() => onAddToCart(product, activeColorIndex, quantity)}
-                className="flex-1 h-[56px] rounded-full bg-[#111] text-white font-bold tracking-wide hover:bg-black transition flex items-center justify-center gap-2 shadow-sm hover:scale-[1.01] active:scale-[0.99]"
+                onClick={() => {
+                  if (!isAddedToCart) onAddToCart(product, activeColorIndex, quantity);
+                }}
+                disabled={isAddedToCart}
+                className={`flex-1 h-[56px] rounded-full font-bold tracking-wide transition flex items-center justify-center gap-2 shadow-sm hover:scale-[1.01] active:scale-[0.99] disabled:cursor-default ${
+                  isAddedToCart ? 'bg-[#22C55E] text-white hover:bg-[#16A34A]' : 'bg-[#111] text-white hover:bg-black'
+                }`}
+                aria-pressed={isAddedToCart}
               >
-                ADD TO CART <ArrowUpRight className="w-4 h-4" />
+                {isAddedToCart ? (
+                  <>
+                    <Check className="w-4 h-4" /> ADDED TO CART
+                  </>
+                ) : (
+                  <>
+                    ADD TO CART <ArrowUpRight className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </div>
 

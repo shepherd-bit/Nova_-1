@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Product, CartItem, ToastItem, FilterState, CheckoutFormData, OrderConfirmation } from './types';
 import { products } from './data/products';
@@ -84,6 +84,14 @@ export default function App() {
     } catch {}
   }, [wishlist]);
 
+  const isVariantInCart = useCallback(
+    (productId: string, colorName: string) =>
+      cart.some(
+        (item) => item.id === productId && item.color === colorName && item.qty > 0
+      ),
+    [cart]
+  );
+
   // Keyboard shortcut Cmd/Ctrl + K for search
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -117,15 +125,17 @@ export default function App() {
 
   // Add To Cart
   const handleAddToCart = (product: Product, colorIndex = 0, qty = 1) => {
-    const colorName = product.colors[colorIndex]?.name || product.colors[0].name;
+    const colorName = product.colors[colorIndex]?.name || product.colors[0]?.name;
+    if (!colorName || isVariantInCart(product.id, colorName)) return;
+
     setCart((prev) => {
-      const existingIdx = prev.findIndex(
-        (item) => item.id === product.id && item.color === colorName
-      );
-      if (existingIdx >= 0) {
-        const next = [...prev];
-        next[existingIdx] = { ...next[existingIdx], qty: next[existingIdx].qty + qty };
-        return next;
+      // A selected color variant can only be added once. Quantity changes happen in the cart drawer.
+      if (
+        prev.some(
+          (item) => item.id === product.id && item.color === colorName && item.qty > 0
+        )
+      ) {
+        return prev;
       }
       return [...prev, { id: product.id, color: colorName, qty }];
     });
@@ -318,6 +328,7 @@ export default function App() {
           product={selectedProduct}
           relatedProducts={related}
           wishlist={wishlist}
+          isVariantInCart={isVariantInCart}
           onBack={() => {
             setSelectedProduct(null);
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -436,6 +447,7 @@ export default function App() {
         wishlist={wishlist}
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={handleAddToCart}
+        isVariantInCart={isVariantInCart}
         onSelectProduct={(p) => {
           setSelectedProduct(p);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -448,6 +460,7 @@ export default function App() {
         wishlist={wishlist}
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={handleAddToCart}
+        isVariantInCart={isVariantInCart}
         onSelectProduct={(p) => {
           setSelectedProduct(p);
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -477,6 +490,7 @@ export default function App() {
         onOpenFilterDrawer={() => setIsFilterDrawerOpen(true)}
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={handleAddToCart}
+        isVariantInCart={isVariantInCart}
         onSelectProduct={(p) => {
           setSelectedProduct(p);
           window.scrollTo({ top: 0, behavior: 'smooth' });

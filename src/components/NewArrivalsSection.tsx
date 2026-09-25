@@ -9,6 +9,7 @@ interface NewArrivalsSectionProps {
   onAddToCart: (product: Product, colorIndex?: number, qty?: number) => void;
   onSelectProduct: (product: Product) => void;
   onViewAll: () => void;
+  isVariantInCart: (productId: string, colorName: string) => boolean;
 }
 
 export const NewArrivalsSection: React.FC<NewArrivalsSectionProps> = ({
@@ -18,6 +19,7 @@ export const NewArrivalsSection: React.FC<NewArrivalsSectionProps> = ({
   onAddToCart,
   onSelectProduct,
   onViewAll,
+  isVariantInCart,
 }) => {
   return (
     <section id="new" className="mx-auto max-w-[1600px] px-6 md:px-10 py-14">
@@ -53,6 +55,7 @@ export const NewArrivalsSection: React.FC<NewArrivalsSectionProps> = ({
                 onToggleWishlist={onToggleWishlist}
                 onAddToCart={onAddToCart}
                 onSelect={onSelectProduct}
+                isInCart={isVariantInCart(item.id, item.colors[0]?.name || '')}
                 size={isRowSpan ? 'tall' : 'default'}
               />
             </div>

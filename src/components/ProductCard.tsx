@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Plus, Star } from 'lucide-react';
+import { Check, Heart, Plus, Star } from 'lucide-react';
 import { Product } from '../types';
 
 interface ProductCardProps {
@@ -8,6 +8,7 @@ interface ProductCardProps {
   onToggleWishlist: (productId: string, e?: React.MouseEvent) => void;
   onAddToCart: (product: Product, colorIndex?: number, qty?: number) => void;
   onSelect: (product: Product) => void;
+  isInCart?: boolean;
   size?: 'default' | 'tall' | 'large';
 }
 
@@ -17,11 +18,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onToggleWishlist,
   onAddToCart,
   onSelect,
+  isInCart = false,
   size = 'default',
 }) => {
   const isTall = size === 'tall';
   const isLarge = size === 'large';
   const isWishlisted = wishlist.includes(product.id);
+  const isAddedToCart = isInCart;
 
   return (
     <div
@@ -81,12 +84,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              onAddToCart(product);
+              if (!isAddedToCart) onAddToCart(product);
             }}
-            className="w-9 h-9 rounded-full bg-[#111] text-white grid place-items-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all hover:scale-105 active:scale-95 shadow-md"
-            aria-label="Add to cart"
+            disabled={isAddedToCart}
+            className={`w-9 h-9 rounded-full text-white grid place-items-center transition-all shadow-md disabled:cursor-default ${
+              isAddedToCart
+                ? 'bg-[#22C55E] opacity-100 translate-y-0'
+                : 'bg-[#111] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 hover:scale-105 active:scale-95'
+            }`}
+            aria-label={isAddedToCart ? 'Added to cart' : 'Add to cart'}
+            aria-pressed={isAddedToCart}
           >
-            <Plus className="w-4 h-4" />
+            {isAddedToCart ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
           </button>
         </div>
       </div>

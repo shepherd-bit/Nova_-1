@@ -20,6 +20,7 @@ interface InventoryCatalogProps {
   onToggleWishlist: (id: string, e?: React.MouseEvent) => void;
   onAddToCart: (product: Product, colorIndex?: number, qty?: number) => void;
   onSelectProduct: (product: Product) => void;
+  isVariantInCart: (productId: string, colorName: string) => boolean;
 }
 
 export const InventoryCatalog: React.FC<InventoryCatalogProps> = ({
@@ -39,6 +40,7 @@ export const InventoryCatalog: React.FC<InventoryCatalogProps> = ({
   onToggleWishlist,
   onAddToCart,
   onSelectProduct,
+  isVariantInCart,
 }) => {
   const categories = ['All', 'Smartphones', 'Laptops', 'Audio', 'Wearables', 'Computing'];
 
@@ -223,6 +225,7 @@ export const InventoryCatalog: React.FC<InventoryCatalogProps> = ({
                   onToggleWishlist={onToggleWishlist}
                   onAddToCart={onAddToCart}
                   onSelect={onSelectProduct}
+                  isInCart={isVariantInCart(item.id, item.colors[0]?.name || '')}
                   size="default"
                 />
               ))}

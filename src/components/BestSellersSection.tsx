@@ -9,6 +9,7 @@ interface BestSellersSectionProps {
   onToggleWishlist: (id: string, e?: React.MouseEvent) => void;
   onAddToCart: (product: Product, colorIndex?: number, qty?: number) => void;
   onSelectProduct: (product: Product) => void;
+  isVariantInCart: (productId: string, colorName: string) => boolean;
 }
 
 export const BestSellersSection: React.FC<BestSellersSectionProps> = ({
@@ -17,6 +18,7 @@ export const BestSellersSection: React.FC<BestSellersSectionProps> = ({
   onToggleWishlist,
   onAddToCart,
   onSelectProduct,
+  isVariantInCart,
 }) => {
   return (
     <section id="best-sellers" className="py-10">
@@ -43,6 +45,7 @@ export const BestSellersSection: React.FC<BestSellersSectionProps> = ({
               onToggleWishlist={onToggleWishlist}
               onAddToCart={onAddToCart}
               onSelect={onSelectProduct}
+              isInCart={isVariantInCart(item.id, item.colors[0]?.name || '')}
               size="large"
             />
           ))}
