@@ -382,10 +382,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 9234,
     images: [
-      { gradient: "from-[#FFFFFF] to-[#E0E0E0]", emoji: "🎧", label: "Case" },
-      { gradient: "from-[#F5F5F5] to-[#CFCFCF]", emoji: "🎧", label: "Buds" },
-      { gradient: "from-[#111] to-[#333]", emoji: "🎧", label: "ANC" },
-      { gradient: "from-[#6C5CFF]/20 to-[#E8FF5A]/20", emoji: "🎧", label: "Tips" }
+      { gradient: "from-[#FFFFFF] to-[#E0E0E0]", src: "./products/p12.jpg", emoji: "🎧", label: "Case" },
+      { gradient: "from-[#F5F5F5] to-[#CFCFCF]", src: "./products/p12.jpg", emoji: "🎧", label: "Buds" },
+      { gradient: "from-[#111] to-[#333]", src: "./products/p12.jpg", emoji: "🎧", label: "ANC" },
+      { gradient: "from-[#6C5CFF]/20 to-[#E8FF5A]/20", src: "./products/p12.jpg", emoji: "🎧", label: "Tips" }
     ],
     specs: {
       Chip: "H2",
@@ -414,10 +414,10 @@ export const products: Product[] = [
     rating: 4.7,
     reviewsCount: 612,
     images: [
-      { gradient: "from-[#1A1A1A] to-[#3A3A3A]", emoji: "🔊", label: "Black" },
-      { gradient: "from-[#6C5CFF] to-[#2A2A5A]", emoji: "🔊", label: "Light" },
-      { gradient: "from-[#E8FF5A] to-[#3A3A3A]", emoji: "🔊", label: "Party" },
-      { gradient: "from-[#333] to-[#666]", emoji: "🔊", label: "Handle" }
+      { gradient: "from-[#1A1A1A] to-[#3A3A3A]", src: "./products/p13.jpg", emoji: "🔊", label: "Black" },
+      { gradient: "from-[#6C5CFF] to-[#2A2A5A]", src: "./products/p13.jpg", emoji: "🔊", label: "Light" },
+      { gradient: "from-[#E8FF5A] to-[#3A3A3A]", src: "./products/p13.jpg", emoji: "🔊", label: "Party" },
+      { gradient: "from-[#333] to-[#666]", src: "./products/p13.jpg", emoji: "🔊", label: "Handle" }
     ],
     specs: {
       Power: "X-Balanced + Passive Radiators",
@@ -447,10 +447,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewsCount: 3219,
     images: [
-      { gradient: "from-[#EAEAEA] to-[#9A9A9A]", emoji: "🔊", label: "State" },
-      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", emoji: "🔊", label: "PositionIQ" },
-      { gradient: "from-[#E8FF5A] to-[#EAEAEA]", emoji: "🔊", label: "Outdoor" },
-      { gradient: "from-[#6C5CFF] to-[#EAEAEA]", emoji: "🔊", label: "Clip" }
+      { gradient: "from-[#EAEAEA] to-[#9A9A9A]", src: "./products/p14.jpg", emoji: "🔊", label: "State" },
+      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", src: "./products/p14.jpg", emoji: "🔊", label: "PositionIQ" },
+      { gradient: "from-[#E8FF5A] to-[#EAEAEA]", src: "./products/p14.jpg", emoji: "🔊", label: "Outdoor" },
+      { gradient: "from-[#6C5CFF] to-[#EAEAEA]", src: "./products/p14.jpg", emoji: "🔊", label: "Clip" }
     ],
     specs: {
       Tech: "PositionIQ auto EQ",
@@ -482,10 +482,10 @@ export const products: Product[] = [
     rating: 4.6,
     reviewsCount: 2104,
     images: [
-      { gradient: "from-[#E8E8F0] to-[#B8B8D0]", emoji: "🎧", label: "Bora Purple" },
-      { gradient: "from-[#111] to-[#333]", emoji: "🎧", label: "Graphite" },
-      { gradient: "from-[#f5f5f5] to-[#d0d0d0]", emoji: "🎧", label: "Case" },
-      { gradient: "from-[#6C5CFF] to-[#E8FF5A]", emoji: "🎧", label: "Hi-Fi" }
+      { gradient: "from-[#E8E8F0] to-[#B8B8D0]", src: "./products/p15.jpg", emoji: "🎧", label: "Bora Purple" },
+      { gradient: "from-[#111] to-[#333]", src: "./products/p15.jpg", emoji: "🎧", label: "Graphite" },
+      { gradient: "from-[#f5f5f5] to-[#d0d0d0]", src: "./products/p15.jpg", emoji: "🎧", label: "Case" },
+      { gradient: "from-[#6C5CFF] to-[#E8FF5A]", src: "./products/p15.jpg", emoji: "🎧", label: "Hi-Fi" }
     ],
     specs: {
       Audio: "24-bit Hi-Fi",
@@ -516,10 +516,10 @@ export const products: Product[] = [
     rating: 4.7,
     reviewsCount: 1523,
     images: [
-      { gradient: "from-[#8AB4F8] to-[#1A73E8]", emoji: "📱", label: "Bay Blue" },
-      { gradient: "from-[#202124] to-[#5F6368]", emoji: "📱", label: "Obsidian" },
-      { gradient: "from-[#F8F9FA] to-[#DADCE0]", emoji: "📱", label: "Porcelain" },
-      { gradient: "from-[#E8FF5A] to-[#8AB4F8]", emoji: "📱", label: "AI" }
+      { gradient: "from-[#8AB4F8] to-[#1A73E8]", src: "./products/p16.jpg", emoji: "📱", label: "Bay Blue" },
+      { gradient: "from-[#202124] to-[#5F6368]", src: "./products/p16.jpg", emoji: "📱", label: "Obsidian" },
+      { gradient: "from-[#F8F9FA] to-[#DADCE0]", src: "./products/p16.jpg", emoji: "📱", label: "Porcelain" },
+      { gradient: "from-[#E8FF5A] to-[#8AB4F8]", src: "./products/p16.jpg", emoji: "📱", label: "AI" }
     ],
     specs: {
       Chip: "Google Tensor G3",
@@ -550,10 +550,10 @@ export const products: Product[] = [
     rating: 4.7,
     reviewsCount: 876,
     images: [
-      { gradient: "from-[#FFFFFF] to-[#B0B0B0]", emoji: "🎮", label: "White" },
-      { gradient: "from-[#111] to-[#6C5CFF]", emoji: "🎮", label: "Performance" },
-      { gradient: "from-[#E8FF5A] to-[#fff]", emoji: "🎮", label: "Game Pass" },
-      { gradient: "from-[#2a2a2a] to-[#5a5a5a]", emoji: "🎮", label: "Grip" }
+      { gradient: "from-[#FFFFFF] to-[#B0B0B0]", src: "./products/p17.jpg", emoji: "🎮", label: "White" },
+      { gradient: "from-[#111] to-[#6C5CFF]", src: "./products/p17.jpg", emoji: "🎮", label: "Performance" },
+      { gradient: "from-[#E8FF5A] to-[#fff]", src: "./products/p17.jpg", emoji: "🎮", label: "Game Pass" },
+      { gradient: "from-[#2a2a2a] to-[#5a5a5a]", src: "./products/p17.jpg", emoji: "🎮", label: "Grip" }
     ],
     specs: {
       CPU: "AMD Z1 Extreme",
@@ -583,10 +583,10 @@ export const products: Product[] = [
     rating: 4.6,
     reviewsCount: 1123,
     images: [
-      { gradient: "from-[#FFFFFF] to-[#E0E0E0]", emoji: "🎧", label: "Transparent" },
-      { gradient: "from-[#1A1A1A] to-[#3A3A3A]", emoji: "🎧", label: "Black" },
-      { gradient: "from-[#f0f0f0] to-[#c0c0c0]", emoji: "🎧", label: "Case" },
-      { gradient: "from-[#E8FF5A] to-[#fff]", emoji: "🎧", label: "Glyph" }
+      { gradient: "from-[#FFFFFF] to-[#E0E0E0]", src: "./products/p18.jpg", emoji: "🎧", label: "Transparent" },
+      { gradient: "from-[#1A1A1A] to-[#3A3A3A]", src: "./products/p18.jpg", emoji: "🎧", label: "Black" },
+      { gradient: "from-[#f0f0f0] to-[#c0c0c0]", src: "./products/p18.jpg", emoji: "🎧", label: "Case" },
+      { gradient: "from-[#E8FF5A] to-[#fff]", src: "./products/p18.jpg", emoji: "🎧", label: "Glyph" }
     ],
     specs: {
       Driver: "11.6mm custom",
@@ -616,10 +616,10 @@ export const products: Product[] = [
     rating: 4.8,
     reviewsCount: 234,
     images: [
-      { gradient: "from-[#D8CFC0] to-[#A89C8A]", emoji: "🔊", label: "Nordic Weave" },
-      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", emoji: "🔊", label: "Dark Oak" },
-      { gradient: "from-[#E8FF5A] to-[#D8CFC0]", emoji: "🔊", label: "Handle" },
-      { gradient: "from-[#6C5CFF] to-[#D8CFC0]", emoji: "🔊", label: "Modular" }
+      { gradient: "from-[#D8CFC0] to-[#A89C8A]", src: "./products/p19.jpg", emoji: "🔊", label: "Nordic Weave" },
+      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", src: "./products/p19.jpg", emoji: "🔊", label: "Dark Oak" },
+      { gradient: "from-[#E8FF5A] to-[#D8CFC0]", src: "./products/p19.jpg", emoji: "🔊", label: "Handle" },
+      { gradient: "from-[#6C5CFF] to-[#D8CFC0]", src: "./products/p19.jpg", emoji: "🔊", label: "Modular" }
     ],
     specs: {
       Drivers: "4 drivers + room adapt",
@@ -650,10 +650,10 @@ export const products: Product[] = [
     rating: 4.9,
     reviewsCount: 5432,
     images: [
-      { gradient: "from-[#0F0F0F] to-[#3A3A3A]", emoji: "🎮", label: "Matte Black" },
-      { gradient: "from-[#107C10] to-[#000]", emoji: "🎮", label: "Velocity" },
-      { gradient: "from-[#222] to-[#555]", emoji: "🎮", label: "Controller" },
-      { gradient: "from-[#E8FF5A] to-[#107C10]", emoji: "🎮", label: "Game Pass" }
+      { gradient: "from-[#0F0F0F] to-[#3A3A3A]", src: "./products/p20.jpg", emoji: "🎮", label: "Matte Black" },
+      { gradient: "from-[#107C10] to-[#000]", src: "./products/p20.jpg", emoji: "🎮", label: "Velocity" },
+      { gradient: "from-[#222] to-[#555]", src: "./products/p20.jpg", emoji: "🎮", label: "Controller" },
+      { gradient: "from-[#E8FF5A] to-[#107C10]", src: "./products/p20.jpg", emoji: "🎮", label: "Game Pass" }
     ],
     specs: {
       CPU: "Custom Zen 2 8-core",
@@ -682,10 +682,10 @@ export const products: Product[] = [
     rating: 4.5,
     reviewsCount: 765,
     images: [
-      { gradient: "from-[#E8E8E8] to-[#A0A0A0]", emoji: "⌚", label: "Silver" },
-      { gradient: "from-[#1A1A1A] to-[#444]", emoji: "⌚", label: "Matte Black" },
-      { gradient: "from-[#8AB4F8] to-[#E8E8E8]", emoji: "⌚", label: "Fitbit" },
-      { gradient: "from-[#E8FF5A] to-[#8AB4F8]", emoji: "⌚", label: "Stress" }
+      { gradient: "from-[#E8E8E8] to-[#A0A0A0]", src: "./products/p21.jpg", emoji: "⌚", label: "Silver" },
+      { gradient: "from-[#1A1A1A] to-[#444]", src: "./products/p21.jpg", emoji: "⌚", label: "Matte Black" },
+      { gradient: "from-[#8AB4F8] to-[#E8E8E8]", src: "./products/p21.jpg", emoji: "⌚", label: "Fitbit" },
+      { gradient: "from-[#E8FF5A] to-[#8AB4F8]", src: "./products/p21.jpg", emoji: "⌚", label: "Stress" }
     ],
     specs: {
       Display: "41mm AMOLED",
@@ -716,10 +716,10 @@ export const products: Product[] = [
     rating: 4.7,
     reviewsCount: 321,
     images: [
-      { gradient: "from-[#E8E8E8] to-[#B8B8B8]", emoji: "🥽", label: "Glass" },
-      { gradient: "from-[#111] to-[#444]", emoji: "🥽", label: "Knit Band" },
-      { gradient: "from-[#6C5CFF] to-[#E8E8E8]", emoji: "🥽", label: "Spatial" },
-      { gradient: "from-[#E8FF5A] to-[#E8E8E8]", emoji: "🥽", label: "Eyesight" }
+      { gradient: "from-[#E8E8E8] to-[#B8B8B8]", src: "./products/p22.jpg", emoji: "🥽", label: "Glass" },
+      { gradient: "from-[#111] to-[#444]", src: "./products/p22.jpg", emoji: "🥽", label: "Knit Band" },
+      { gradient: "from-[#6C5CFF] to-[#E8E8E8]", src: "./products/p22.jpg", emoji: "🥽", label: "Spatial" },
+      { gradient: "from-[#E8FF5A] to-[#E8E8E8]", src: "./products/p22.jpg", emoji: "🥽", label: "Eyesight" }
     ],
     specs: {
       Display: "23M pixels dual micro-OLED",
@@ -749,10 +749,10 @@ export const products: Product[] = [
     rating: 4.6,
     reviewsCount: 534,
     images: [
-      { gradient: "from-[#F5F5F0] to-[#CFCFC0]", emoji: "💻", label: "Platinum" },
-      { gradient: "from-[#2A2A2A] to-[#5A5A5A]", emoji: "💻", label: "Graphite" },
-      { gradient: "from-[#E8FF5A] to-[#F5F5F0]", emoji: "💻", label: "OLED" },
-      { gradient: "from-[#111] to-[#6C5CFF]", emoji: "💻", label: "Keys" }
+      { gradient: "from-[#F5F5F0] to-[#CFCFC0]", src: "./products/p23.jpg", emoji: "💻", label: "Platinum" },
+      { gradient: "from-[#2A2A2A] to-[#5A5A5A]", src: "./products/p23.jpg", emoji: "💻", label: "Graphite" },
+      { gradient: "from-[#E8FF5A] to-[#F5F5F0]", src: "./products/p23.jpg", emoji: "💻", label: "OLED" },
+      { gradient: "from-[#111] to-[#6C5CFF]", src: "./products/p23.jpg", emoji: "💻", label: "Keys" }
     ],
     specs: {
       CPU: "Intel Ultra 7 155H",
@@ -782,10 +782,10 @@ export const products: Product[] = [
     rating: 4.5,
     reviewsCount: 923,
     images: [
-      { gradient: "from-[#FFFFFF] to-[#D0D0D0]", emoji: "📱", label: "White" },
-      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", emoji: "📱", label: "Dark Gray" },
-      { gradient: "from-[#E8FF5A] to-[#fff]", emoji: "📱", label: "Glyph" },
-      { gradient: "from-[#6C5CFF] to-[#fff]", emoji: "📱", label: "Interface" }
+      { gradient: "from-[#FFFFFF] to-[#D0D0D0]", src: "./products/p24.jpg", emoji: "📱", label: "White" },
+      { gradient: "from-[#1A1A1A] to-[#4A4A4A]", src: "./products/p24.jpg", emoji: "📱", label: "Dark Gray" },
+      { gradient: "from-[#E8FF5A] to-[#fff]", src: "./products/p24.jpg", emoji: "📱", label: "Glyph" },
+      { gradient: "from-[#6C5CFF] to-[#fff]", src: "./products/p24.jpg", emoji: "📱", label: "Interface" }
     ],
     specs: {
       Chip: "Snapdragon 8+ Gen 1",
@@ -804,5 +804,4 @@ export const products: Product[] = [
     isNew: false,
     isBestSeller: false,
     isPromo: true
-  }
-];
+  }];
