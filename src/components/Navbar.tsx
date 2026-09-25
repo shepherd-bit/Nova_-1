@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-xl bg-[#FAF9F6]/95 border-b border-black/[0.06]"
       >
         <div
-          className={`mx-auto max-w-[1600px] px-4 sm:px-6 md:px-10 ${HEADER_HEIGHT} grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-2.5 sm:flex sm:gap-6`}
+          className={`mx-auto max-w-[1600px] px-4 sm:px-6 md:px-10 ${HEADER_HEIGHT} grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-2.5 sm:flex sm:items-center sm:justify-between sm:gap-6`}
         >
           {/* Left: Brand Logo */}
           <motion.div
