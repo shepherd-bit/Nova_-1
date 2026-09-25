@@ -344,6 +344,8 @@ export default function App() {
           product={selectedProduct}
           relatedProducts={related}
           wishlist={wishlist}
+          cartCount={totalCartCount}
+          onOpenCart={() => setIsCartOpen(true)}
           isVariantInCart={isVariantInCart}
           onBack={() => {
             setSelectedProduct(null);

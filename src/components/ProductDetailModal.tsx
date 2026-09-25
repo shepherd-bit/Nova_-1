@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Check, Heart, Minus, Plus, Star } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Check, Heart, Minus, Plus, ShoppingBag, Star } from 'lucide-react';
 import { Product } from '../types';
 
 interface ProductDetailModalProps {
   product: Product;
   relatedProducts: Product[];
   wishlist: string[];
+  cartCount: number;
   onBack: () => void;
+  onOpenCart: () => void;
   onToggleWishlist: (id: string, e?: React.MouseEvent) => void;
   onAddToCart: (product: Product, colorIndex?: number, qty?: number) => void;
   onBuyNow: (product: Product, colorIndex: number, qty: number) => void;
@@ -18,7 +20,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   product,
   relatedProducts,
   wishlist,
+  cartCount,
   onBack,
+  onOpenCart,
   onToggleWishlist,
   onAddToCart,
   onBuyNow,
@@ -52,14 +56,29 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </span>
           </button>
 
-          <button
-            type="button"
-            onClick={onBack}
-            className="flex items-center gap-2 text-[13px] font-bold bg-white border border-black/10 px-4 py-2 rounded-full hover:bg-black/5 transition"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to shop
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex items-center gap-2 text-[13px] font-bold bg-white border border-black/10 px-4 py-2 rounded-full hover:bg-black/5 transition"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="hidden sm:inline">Back to shop</span>
+              <span className="sm:hidden">Back</span>
+            </button>
+            <button
+              type="button"
+              onClick={onOpenCart}
+              className="h-10 px-3 sm:px-4 rounded-full bg-[#111] text-white flex items-center gap-2 text-[13px] font-bold hover:bg-black transition shadow-sm"
+              aria-label={`Open cart, ${cartCount} items`}
+            >
+              <ShoppingBag className="w-4 h-4" />
+              <span className="hidden sm:inline">Cart</span>
+              <span className="bg-white text-black w-5 h-5 rounded-full grid place-items-center text-[11px] font-bold">
+                {cartCount}
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
