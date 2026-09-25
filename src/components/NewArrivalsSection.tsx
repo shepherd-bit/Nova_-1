@@ -23,14 +23,14 @@ export const NewArrivalsSection: React.FC<NewArrivalsSectionProps> = ({
   isVariantInCart,
 }) => {
   return (
-    <section id="new" className="mx-auto max-w-[1600px] px-6 md:px-10 py-14">
-      <div className="flex items-baseline justify-between">
+    <section id="new" className="mx-auto max-w-[1600px] px-4 sm:px-6 md:px-10 py-8 sm:py-10 md:py-14">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[34px] md:text-[48px] font-[800] tracking-[-0.02em] text-[#111]"
+          className="text-[26px] sm:text-[32px] md:text-[48px] font-[800] tracking-[-0.02em] text-[#111]"
         >
           New arrivals
         </motion.h2>
@@ -42,13 +42,13 @@ export const NewArrivalsSection: React.FC<NewArrivalsSectionProps> = ({
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[13px] font-bold underline decoration-2 underline-offset-4 text-[#111] hover:text-black transition cursor-pointer"
+          className="text-[11px] sm:text-[13px] font-bold underline decoration-2 underline-offset-4 text-[#111] hover:text-black transition cursor-pointer"
         >
           View all new — {products.length} items
         </motion.button>
       </div>
 
-      <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div className="mt-5 sm:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
         {products.map((item, index) => {
           const isRowSpan = index % 3 === 0;
           const isShifted1 = index === 1;
@@ -66,8 +66,9 @@ export const NewArrivalsSection: React.FC<NewArrivalsSectionProps> = ({
                 ease: [0.16, 1, 0.3, 1] 
               }}
               whileHover={{ y: -4 }}
-              className={`${isRowSpan ? 'row-span-2' : ''} ${
-                isShifted1 ? 'mt-6 lg:mt-10' : ''
+              // The staggered/tall asymmetry only reads correctly on the 4-column layout.
+              className={`${isRowSpan ? 'lg:row-span-2' : ''} ${
+                isShifted1 ? 'lg:mt-10' : ''
               } ${isShifted2 ? 'lg:mt-4' : ''} transition-shadow duration-300`}
             >
               <ProductCard

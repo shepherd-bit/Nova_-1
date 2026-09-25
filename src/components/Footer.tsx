@@ -34,31 +34,31 @@ export const Footer: React.FC<FooterProps> = ({ onToast }) => {
   ];
 
   return (
-    <footer className="mt-10 border-t border-black/10 bg-white">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 py-12 grid md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] gap-10">
+    <footer className="mt-6 sm:mt-10 border-t border-black/10 bg-white">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 md:px-10 py-8 sm:py-12 grid md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] gap-8 sm:gap-10">
         {/* Brand info & Newsletter */}
         <div>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-[#111] text-white grid place-items-center font-bold text-[13px]">
               N
             </div>
-            <span className="font-[800] text-[18px] tracking-tight text-[#111]">NOVA•</span>
+            <span className="font-[800] text-[16px] sm:text-[18px] tracking-tight text-[#111]">NOVA•</span>
           </div>
 
-          <p className="mt-4 text-[14px] leading-[1.5] text-black/60 max-w-[360px]">
+          <p className="mt-3 sm:mt-4 text-[12px] sm:text-[14px] leading-[1.5] text-black/60 max-w-[360px]">
             Tech that thinks. A lab-store for people who care about materials, sound, and the space between.
           </p>
 
-          <form onSubmit={handleSubscribe} className="mt-6 flex gap-2 max-w-[360px]">
+          <form onSubmit={handleSubscribe} className="mt-4 sm:mt-6 flex gap-2 max-w-[360px]">
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email for product drops"
-              className="h-11 flex-1 rounded-full bg-[#FAF9F6] border border-black/10 px-4 text-[13px] outline-none focus:border-black/30 text-[#111]"
+              className="min-w-0 h-11 flex-1 rounded-full bg-[#FAF9F6] border border-black/10 px-3 sm:px-4 text-[12px] sm:text-[13px] outline-none focus:border-black/30 text-[#111]"
             />
             <button
               type="submit"
-              className="h-11 px-5 rounded-full bg-[#111] text-white text-[13px] font-bold hover:bg-black transition shadow-sm"
+              className="h-11 shrink-0 px-3 sm:px-5 rounded-full bg-[#111] text-white text-[12px] sm:text-[13px] font-bold hover:bg-black transition shadow-sm"
             >
               JOIN
             </button>
@@ -68,10 +68,10 @@ export const Footer: React.FC<FooterProps> = ({ onToast }) => {
         {/* Navigation columns */}
         {footerGroups.map((group) => (
           <div key={group.title}>
-            <p className="text-[12px] font-bold tracking-widest text-[#111] uppercase">
+            <p className="text-[11px] sm:text-[12px] font-bold tracking-widest text-[#111] uppercase">
               {group.title}
             </p>
-            <div className="mt-4 space-y-2 text-[14px] text-black/60">
+            <div className="mt-3 sm:mt-4 space-y-2 text-[13px] sm:text-[14px] text-black/60">
               {group.links.map((link) => (
                 <p
                   key={link}
@@ -87,12 +87,12 @@ export const Footer: React.FC<FooterProps> = ({ onToast }) => {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-black/5 py-6 px-6 md:px-10 mx-auto max-w-[1600px] flex flex-col md:flex-row items-center justify-between gap-3 text-[12px] text-black/40">
+      <div className="border-t border-black/5 py-4 sm:py-6 px-4 sm:px-6 md:px-10 mx-auto max-w-[1600px] flex flex-col md:flex-row items-center justify-between gap-2 sm:gap-3 text-[10px] sm:text-[12px] text-black/40 text-center md:text-left">
         <span>
           © 2025 NOVA LAB INC. Built for the unconventional. Off-white #FAF9F6 / Electric #6C5CFF / Lime #E8FF5A.
         </span>
-        <span className="flex items-center gap-2">
-          <Sparkles className="w-3 h-3 text-[#6C5CFF]" /> Designed like Apple + Aritzia + Teenage Engineering
+        <span className="flex items-center gap-1.5 sm:gap-2">
+          <Sparkles className="w-3 h-3 text-[#6C5CFF] shrink-0" /> Designed like Apple + Aritzia + Teenage Engineering
         </span>
       </div>
     </footer>

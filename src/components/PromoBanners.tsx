@@ -15,8 +15,8 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
   const glasses = products[8]; // Ray-Ban Meta Glasses
 
   return (
-    <section id="promos" className="mx-auto max-w-[1600px] px-6 md:px-10 py-10 overflow-hidden">
-      <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-4 md:gap-6">
+    <section id="promos" className="mx-auto max-w-[1600px] px-4 sm:px-6 md:px-10 py-6 sm:py-8 md:py-10 overflow-hidden">
+      <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-3 sm:gap-4 md:gap-6">
         
         {/* Banner 1: Audio Week */}
         <motion.div 
@@ -24,7 +24,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[32px] bg-[#111] text-white p-8 md:p-10 relative overflow-hidden min-h-[420px] flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.15)] group"
+          className="rounded-[20px] sm:rounded-[32px] bg-[#111] text-white p-5 sm:p-8 md:p-10 relative overflow-hidden min-h-[290px] sm:min-h-[360px] md:min-h-[420px] flex flex-col justify-between shadow-[0_20px_60px_rgba(0,0,0,0.15)] group"
         >
           {/* Animated Ambient Background Gradients */}
           <motion.div 
@@ -50,7 +50,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="inline-flex bg-white text-black text-[11px] font-bold px-3 py-1 rounded-full tracking-widest shadow-sm"
+              className="inline-flex bg-white text-black text-[9px] sm:text-[11px] font-bold px-2 sm:px-3 py-1 rounded-full tracking-wide sm:tracking-widest shadow-sm"
             >
               SALE WEEK • LIVE NOW
             </motion.span>
@@ -60,7 +60,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-[38px] md:text-[54px] leading-[1.0] font-[800] tracking-[-0.02em]"
+              className="mt-4 sm:mt-6 text-[27px] sm:text-[34px] md:text-[54px] leading-[1.0] font-[800] tracking-[-0.02em]"
             >
               UP TO 40%
               <br />
@@ -72,13 +72,13 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-4 max-w-[380px] text-white/60 text-[15px] leading-[1.5]"
+              className="mt-3 sm:mt-4 max-w-[380px] text-white/60 text-[12px] sm:text-[15px] leading-[1.5]"
             >
               Sony, Bose, Apple, Nothing — our entire listening lab. Ends Sunday midnight PST.
             </motion.p>
           </div>
 
-          <div className="relative z-10 flex items-end justify-between gap-6 mt-6">
+          <div className="relative z-10 flex items-end justify-between gap-4 sm:gap-6 mt-4 sm:mt-6">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -86,7 +86,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               <button
                 type="button"
                 onClick={onExploreAudio}
-                className="h-[48px] px-6 rounded-full bg-white text-black font-bold text-[14px] hover:bg-white/90 transition shadow-sm cursor-pointer"
+                className="h-10 sm:h-[48px] px-3 sm:px-6 rounded-full bg-white text-black font-bold text-[10px] sm:text-[14px] hover:bg-white/90 transition shadow-sm cursor-pointer"
               >
                 SHOP COLLECTION — 12 ITEMS
               </button>
@@ -116,12 +116,12 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[32px] bg-[#E8FF5A] p-8 md:p-10 relative overflow-hidden min-h-[420px] flex flex-col justify-between border border-black/10 max-w-full shadow-[0_20px_60px_rgba(232,255,90,0.2)] group"
+          className="rounded-[20px] sm:rounded-[32px] bg-[#E8FF5A] p-5 sm:p-8 md:p-10 relative overflow-hidden min-h-[290px] sm:min-h-[360px] md:min-h-[420px] flex flex-col justify-between border border-black/10 max-w-full shadow-[0_20px_60px_rgba(232,255,90,0.2)] group"
         >
           <motion.div 
             animate={{ rotate: [0, 10, 0] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-10 -top-10 w-[200px] h-[200px] rounded-full bg-white/60 blur-[1px] pointer-events-none" 
+            className="absolute -right-10 -top-10 w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] rounded-full bg-white/60 blur-[1px] pointer-events-none" 
           />
 
           <div className="relative z-10">
@@ -130,7 +130,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="inline-flex bg-[#111] text-white text-[11px] font-bold px-3 py-1 rounded-full tracking-widest shadow-sm"
+              className="inline-flex bg-[#111] text-white text-[9px] sm:text-[11px] font-bold px-2 sm:px-3 py-1 rounded-full tracking-wide sm:tracking-widest shadow-sm"
             >
               NEW DROP
             </motion.span>
@@ -140,7 +140,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-6 text-[32px] md:text-[44px] leading-[1.05] font-[800] tracking-[-0.02em] text-[#111]"
+              className="mt-4 sm:mt-6 text-[25px] sm:text-[30px] md:text-[44px] leading-[1.05] font-[800] tracking-[-0.02em] text-[#111]"
             >
               GLASSES
               <br />
@@ -152,7 +152,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-3 text-[14px] leading-[1.5] text-black/70 max-w-[300px]"
+              className="mt-2.5 sm:mt-3 text-[12px] sm:text-[14px] leading-[1.5] text-black/70 max-w-[300px]"
             >
               Ray-Ban Meta + Vision Pro lab. Spatial, POV, AI — try in store or 30-day home trial.
             </motion.p>
@@ -163,12 +163,12 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.45 }}
-            className="relative z-10 flex items-center gap-3 mt-6"
+            className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-3 mt-4 sm:mt-6"
           >
             <motion.div 
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="w-[56%] aspect-[4/3] rounded-[20px] overflow-hidden bg-black/5 border border-black/10 shadow-md relative"
+              className="w-full sm:w-[56%] aspect-[4/3] rounded-[16px] sm:rounded-[20px] overflow-hidden bg-black/5 border border-black/10 shadow-md relative"
             >
               <img
                 src="./promo-banner-image/sales-rayban.jpg"
@@ -177,8 +177,8 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
               />
             </motion.div>
             
-            <div className="flex-1">
-              <p className="font-bold text-[14px] text-[#111]">From $329</p>
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-[12px] sm:text-[14px] text-[#111]">From $329</p>
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -186,7 +186,7 @@ export const PromoBanners: React.FC<PromoBannersProps> = ({
                 <button
                   type="button"
                   onClick={onExploreWearables}
-                  className="mt-2 h-10 px-4 rounded-full bg-[#111] text-white font-bold text-[12px] hover:bg-black transition shadow-sm cursor-pointer"
+                  className="mt-2 h-9 sm:h-10 px-3 sm:px-4 rounded-full bg-[#111] text-white font-bold text-[10px] sm:text-[12px] hover:bg-black transition shadow-sm cursor-pointer"
                 >
                   EXPLORE WEARABLES
                 </button>

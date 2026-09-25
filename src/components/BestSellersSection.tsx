@@ -21,9 +21,9 @@ export const BestSellersSection: React.FC<BestSellersSectionProps> = ({
   isVariantInCart,
 }) => {
   return (
-    <section id="best-sellers" className="py-10">
-      <div className="mx-auto max-w-[1600px] px-6 md:px-10 flex items-end justify-between">
-        <h2 className="text-[34px] md:text-[48px] font-[800] tracking-[-0.02em] leading-[1.05] text-[#111]">
+    <section id="best-sellers" className="py-8 md:py-10">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 md:px-10 flex items-end justify-between gap-3">
+        <h2 className="text-[26px] sm:text-[32px] md:text-[48px] font-[800] tracking-[-0.02em] leading-[1.05] text-[#111]">
           Best selling
           <br />
           <span className="text-black/30 font-bold">— lab favorites</span>
@@ -35,8 +35,8 @@ export const BestSellersSection: React.FC<BestSellersSectionProps> = ({
         </div>
       </div>
 
-      <div className="mt-8 overflow-x-auto scrollbar-hide">
-        <div className="flex gap-4 px-6 md:px-10 pr-10 snap-x snap-mandatory">
+      <div className="mt-5 sm:mt-8 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-3 sm:gap-4 px-4 sm:px-6 md:px-10 md:pr-10 snap-x snap-mandatory">
           {products.map((item) => (
             <ProductCard
               key={item.id}

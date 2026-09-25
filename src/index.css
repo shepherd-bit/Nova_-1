@@ -7,6 +7,12 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
   }
 
+  html {
+    /* Stop iOS Safari from inflating text in landscape, which breaks layouts. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   html,
   body {
     background-color: #FAF9F6;
@@ -15,10 +21,25 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
+  body {
+    /* Wide desktop layouts must never create a horizontal scrollbar on phones.
+       Set on body (not html) so position: sticky headers keep working. */
+    overflow-x: hidden;
+  }
+
+  img,
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
   h1, h2, h3, h4, h5, h6, .font-display, .display {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
     letter-spacing: -0.02em;
+    /* Long brand/product names should wrap instead of stretching the page. */
+    overflow-wrap: break-word;
   }
 }
 
@@ -37,4 +58,10 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
