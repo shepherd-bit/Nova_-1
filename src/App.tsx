@@ -2,6 +2,7 @@ import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import { AnimatePresence } from 'framer-motion';
 import { Product, CartItem, ToastItem, FilterState, CheckoutFormData, OrderConfirmation } from './types';
 import { products } from './data/products';
+import { matchesQuery } from './utils/searchSuggestions';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { PromoBanners } from './components/PromoBanners';
@@ -331,16 +332,10 @@ export default function App() {
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    // Search query
+    // Search query — same matcher the navbar suggestions use, so a suggestion
+    // can never point at a product this grid would then refuse to show.
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      result = result.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.brand.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          p.superCategory.toLowerCase().includes(q)
-      );
+      result = result.filter((p) => matchesQuery(p, searchQuery));
     }
 
     // Category Buttons
@@ -480,6 +475,7 @@ export default function App() {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         searchInputRef={searchInputRef}
+        products={products}
         wishlistCount={wishlist.length}
         cartCount={totalCartCount}
         isCategoriesOpen={isCategoriesOpen}
