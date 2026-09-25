@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Product, CartItem, ToastItem, FilterState, CheckoutFormData, OrderConfirmation } from './types';
 import { products } from './data/products';
 import { Navbar } from './components/Navbar';
@@ -129,7 +130,7 @@ export default function App() {
       return [...prev, { id: product.id, color: colorName, qty }];
     });
     showToast(`${product.name} added to cart`);
-    setIsCartOpen(true);
+    // setIsCartOpen(true); Removed so it updates silently in the background
   };
 
   // Direct Buy Now
@@ -328,21 +329,23 @@ export default function App() {
         />
 
         {/* Global Drawers & Modals */}
-        {isCartOpen && (
-          <CartDrawer
-            cartItems={cartItemsWithProducts}
-            cartTotal={cartTotal}
-            shipping={shippingCost}
-            onClose={() => setIsCartOpen(false)}
-            onUpdateQty={handleUpdateCartQty}
-            onRemove={handleRemoveFromCart}
-            onCheckout={() => {
-              setIsCartOpen(false);
-              setCheckoutStep(1);
-              setIsCheckoutOpen(true);
-            }}
-          />
-        )}
+        <AnimatePresence>
+          {isCartOpen && (
+            <CartDrawer
+              cartItems={cartItemsWithProducts}
+              cartTotal={cartTotal}
+              shipping={shippingCost}
+              onClose={() => setIsCartOpen(false)}
+              onUpdateQty={handleUpdateCartQty}
+              onRemove={handleRemoveFromCart}
+              onCheckout={() => {
+                setIsCartOpen(false);
+                setCheckoutStep(1);
+                setIsCheckoutOpen(true);
+              }}
+            />
+          )}
+        </AnimatePresence>
 
         {isCheckoutOpen && (
           <CheckoutModal
@@ -494,22 +497,24 @@ export default function App() {
         />
       )}
 
-      {/* Cart Drawer */}
-      {isCartOpen && (
-        <CartDrawer
-          cartItems={cartItemsWithProducts}
-          cartTotal={cartTotal}
-          shipping={shippingCost}
-          onClose={() => setIsCartOpen(false)}
-          onUpdateQty={handleUpdateCartQty}
-          onRemove={handleRemoveFromCart}
-          onCheckout={() => {
-            setIsCartOpen(false);
-            setCheckoutStep(1);
-            setIsCheckoutOpen(true);
-          }}
-        />
-      )}
+      {/* Cart Drawer with Framer Motion AnimatePresence */}
+      <AnimatePresence>
+        {isCartOpen && (
+          <CartDrawer
+            cartItems={cartItemsWithProducts}
+            cartTotal={cartTotal}
+            shipping={shippingCost}
+            onClose={() => setIsCartOpen(false)}
+            onUpdateQty={handleUpdateCartQty}
+            onRemove={handleRemoveFromCart}
+            onCheckout={() => {
+              setIsCartOpen(false);
+              setCheckoutStep(1);
+              setIsCheckoutOpen(true);
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Checkout Modal with Integrated Stripe Payment Processing */}
       {isCheckoutOpen && (

@@ -1,8 +1,10 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Minus, Plus, Trash2, X, ArrowUpRight } from 'lucide-react';
 import { CartItem } from '../types';
 
 interface CartDrawerProps {
+  isOpen?: boolean; // Optional prop if you control visibility from outside, or manage via conditional rendering
   cartItems: CartItem[];
   cartTotal: number;
   shipping: number;
@@ -27,15 +29,25 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const remainingForFreeShipping = Math.max(0, freeShippingThreshold - cartTotal);
 
   return (
-    <div className="fixed inset-0 z-50 flex">
-      {/* Backdrop */}
-      <div
-        className="flex-1 bg-black/20 backdrop-blur-sm transition-opacity"
+    <div className="fixed inset-0 z-50 flex justify-end">
+      {/* Backdrop Animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="absolute inset-0 bg-black/20 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Cart Container */}
-      <div className="w-[420px] max-w-[92vw] bg-white h-full flex flex-col border-l border-black/10 shadow-[-20px_0_80px_rgba(0,0,0,0.15)] z-10">
+      {/* Cart Container Slide Animation */}
+      <motion.div
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        className="relative w-[420px] max-w-[92vw] bg-white h-full flex flex-col border-l border-black/10 shadow-[-20px_0_80px_rgba(0,0,0,0.15)] z-10"
+      >
         {/* Header */}
         <div className="h-[72px] px-6 flex items-center justify-between border-b border-black/5">
           <h3 className="text-[20px] font-[800] tracking-tight text-[#111]">
@@ -95,63 +107,76 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </button>
             </div>
           ) : (
-            cartItems.map((item) => (
-              <div
-                key={`${item.id}-${item.color}`}
-                className="rounded-[20px] border border-black/5 p-3 flex gap-3 bg-[#FAF9F6]/60 shadow-sm"
-              >
+            cartItems.map((item) => {
+              const currentImage = item.product.images[0];
+              
+              return (
                 <div
-                  className={`w-[84px] h-[84px] rounded-[16px] bg-gradient-to-br ${item.product.images[0].gradient} grid place-items-center text-3xl shrink-0`}
+                  key={`${item.id}-${item.color}`}
+                  className="rounded-[20px] border border-black/5 p-3 flex gap-3 bg-[#FAF9F6]/60 shadow-sm items-center"
                 >
-                  {item.product.images[0].emoji}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <p className="font-bold text-[13px] leading-[1.2] truncate text-[#111]">
-                    {item.product.name}
-                  </p>
-                  <p className="text-[11px] text-black/50 mt-1">
-                    {item.color} • {item.product.brand}
-                  </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <div className="flex items-center gap-1 bg-white border border-black/10 rounded-full px-1 shadow-inner">
-                      <button
-                        type="button"
-                        onClick={() => onUpdateQty(item.id, item.color, -1)}
-                        className="w-6 h-6 rounded-full hover:bg-black/5 grid place-items-center transition"
-                        aria-label="Decrease quantity"
-                      >
-                        <Minus className="w-3 h-3" />
-                      </button>
-                      <span className="w-6 text-center text-[12px] font-bold text-[#111]">
-                        {item.qty}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => onUpdateQty(item.id, item.color, 1)}
-                        className="w-6 h-6 rounded-full hover:bg-black/5 grid place-items-center transition"
-                        aria-label="Increase quantity"
-                      >
-                        <Plus className="w-3 h-3" />
-                      </button>
-                    </div>
-
-                    <span className="font-bold text-[13px] text-[#111]">
-                      ${(item.product.price * item.qty).toLocaleString()}
-                    </span>
+                  {/* Product Thumbnail (Supports real image URL or falls back to emoji/gradient) */}
+                  <div
+                    className={`w-[84px] h-[84px] rounded-[16px] bg-gradient-to-br ${currentImage?.gradient || 'from-gray-100 to-gray-200'} overflow-hidden relative grid place-items-center shrink-0 border border-black/5`}
+                  >
+                    {currentImage?.url ? (
+                      <img
+                        src={currentImage.url}
+                        alt={item.product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-3xl">{currentImage?.emoji || '📦'}</span>
+                    )}
                   </div>
-                </div>
 
-                <button
-                  type="button"
-                  onClick={() => onRemove(item.id, item.color)}
-                  className="w-8 h-8 rounded-full bg-white border border-black/10 grid place-items-center self-start hover:bg-red-50 hover:border-red-200 transition text-black/60 hover:text-red-600"
-                  aria-label="Remove item"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-[13px] leading-[1.2] truncate text-[#111]">
+                      {item.product.name}
+                    </p>
+                    <p className="text-[11px] text-black/50 mt-1">
+                      {item.color} • {item.product.brand}
+                    </p>
+                    <div className="mt-2 flex items-center justify-between">
+                      <div className="flex items-center gap-1 bg-white border border-black/10 rounded-full px-1 shadow-inner">
+                        <button
+                          type="button"
+                          onClick={() => onUpdateQty(item.id, item.color, -1)}
+                          className="w-6 h-6 rounded-full hover:bg-black/5 grid place-items-center transition"
+                          aria-label="Decrease quantity"
+                        >
+                          <Minus className="w-3 h-3" />
+                        </button>
+                        <span className="w-6 text-center text-[12px] font-bold text-[#111]">
+                          {item.qty}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => onUpdateQty(item.id, item.color, 1)}
+                          className="w-6 h-6 rounded-full hover:bg-black/5 grid place-items-center transition"
+                          aria-label="Increase quantity"
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
+
+                      <span className="font-bold text-[13px] text-[#111]">
+                        ${(item.product.price * item.qty).toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => onRemove(item.id, item.color)}
+                    className="w-8 h-8 rounded-full bg-white border border-black/10 grid place-items-center self-start hover:bg-red-50 hover:border-red-200 transition text-black/60 hover:text-red-600"
+                    aria-label="Remove item"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              );
+            })
           )}
         </div>
 
@@ -188,7 +213,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </p>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };
