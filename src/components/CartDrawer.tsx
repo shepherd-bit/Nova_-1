@@ -115,13 +115,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   key={`${item.id}-${item.color}`}
                   className="rounded-[20px] border border-black/5 p-3 flex gap-3 bg-[#FAF9F6]/60 shadow-sm items-center"
                 >
-                  {/* Product Thumbnail (Supports real image URL or falls back to emoji/gradient) */}
+                  {/* Product thumbnail uses the same image source as the product card. */}
                   <div
                     className={`w-[84px] h-[84px] rounded-[16px] bg-gradient-to-br ${currentImage?.gradient || 'from-gray-100 to-gray-200'} overflow-hidden relative grid place-items-center shrink-0 border border-black/5`}
                   >
-                    {currentImage?.url ? (
+                    {currentImage?.src ? (
                       <img
-                        src={currentImage.url}
+                        src={currentImage.src}
                         alt={item.product.name}
                         className="w-full h-full object-cover"
                       />
