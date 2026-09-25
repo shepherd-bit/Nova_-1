@@ -15,9 +15,31 @@ import { CheckoutModal } from './components/CheckoutModal';
 import { ToastContainer } from './components/ToastContainer';
 import { Footer } from './components/Footer';
 
+const getProductFromPath = (pathname: string): Product | null => {
+  const match = pathname.match(/^\/products\/([^/]+)\/?$/);
+  if (!match) return null;
+
+  try {
+    const productId = decodeURIComponent(match[1]);
+    return products.find((product) => product.id === productId) ?? null;
+  } catch {
+    return null;
+  }
+};
+
+const getProductPath = (product: Product) => `/products/${encodeURIComponent(product.id)}`;
+
+interface NovaRouteState {
+  novaRoute: true;
+  productId?: string;
+  fromPath?: string;
+}
+
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(() =>
+    getProductFromPath(window.location.pathname)
+  );
   const [cart, setCart] = useState<Array<{ id: string; color: string; qty: number }>>(() => {
     try {
       const saved = localStorage.getItem('nova_cart');
@@ -47,6 +69,61 @@ export default function App() {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Restore the route on refresh and keep the browser Back/Forward buttons in sync.
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedProduct(getProductFromPath(window.location.pathname));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    document.title = selectedProduct ? `${selectedProduct.name} | NOVA` : 'NOVA• E-Commerce';
+  }, [selectedProduct]);
+
+  const handleSelectProduct = useCallback((product: Product) => {
+    const nextPath = getProductPath(product);
+
+    if (window.location.pathname !== nextPath) {
+      const routeState: NovaRouteState = {
+        novaRoute: true,
+        productId: product.id,
+        fromPath: window.location.pathname,
+      };
+      window.history.pushState(routeState, '', nextPath);
+    }
+
+    setSelectedProduct(product);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const handleProductBack = useCallback(() => {
+    const routeState = window.history.state as NovaRouteState | null;
+
+    if (routeState?.novaRoute && routeState.fromPath) {
+      window.history.back();
+    } else {
+      // A product URL opened directly has no in-app page to return to.
+      window.history.replaceState({ novaRoute: true }, '', '/');
+      setSelectedProduct(null);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const handleResetToHome = useCallback(() => {
+    if (window.location.pathname !== '/') {
+      window.history.pushState({ novaRoute: true }, '', '/');
+    }
+    setSelectedProduct(null);
+    setActiveCategory('All');
+    setSearchQuery('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const [filters, setFilters] = useState<FilterState>({
     categories: [],
@@ -341,20 +418,18 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#FAF9F6] text-[#111] antialiased selection:bg-[#6C5CFF] selection:text-white">
         <ProductDetailModal
+          key={selectedProduct.id}
           product={selectedProduct}
           relatedProducts={related}
           wishlist={wishlist}
           cartCount={totalCartCount}
           onOpenCart={() => setIsCartOpen(true)}
           isVariantInCart={isVariantInCart}
-          onBack={() => {
-            setSelectedProduct(null);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onBack={handleProductBack}
           onToggleWishlist={handleToggleWishlist}
           onAddToCart={handleToggleCart}
           onBuyNow={handleBuyNow}
-          onSelectRelated={(p) => setSelectedProduct(p)}
+          onSelectRelated={handleSelectProduct}
         />
 
         {/* Global Drawers & Modals */}
@@ -416,12 +491,7 @@ export default function App() {
         }}
         onSelectSort={setActiveSort}
         onToast={showToast}
-        onResetToHome={() => {
-          setSelectedProduct(null);
-          setActiveCategory('All');
-          setSearchQuery('');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onResetToHome={handleResetToHome}
       />
 
       {/* 2. Hero Section with 3D Showcase & Marquee */}
@@ -436,10 +506,7 @@ export default function App() {
           showToast('Sale collection — up to 40% off audio');
           document.getElementById('promos')?.scrollIntoView({ behavior: 'smooth' });
         }}
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectProduct={handleSelectProduct}
         onQuickAdd={(p) => handleAddToCart(p, 0, 1)}
       />
 
@@ -466,10 +533,7 @@ export default function App() {
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={handleToggleCart}
         isVariantInCart={isVariantInCart}
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectProduct={handleSelectProduct}
       />
 
       {/* 5. New Arrivals Bento Grid */}
@@ -479,10 +543,7 @@ export default function App() {
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={handleToggleCart}
         isVariantInCart={isVariantInCart}
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectProduct={handleSelectProduct}
         onViewAll={() => {
           setActiveCategory('All');
           setActiveSort('Newest');
@@ -509,10 +570,7 @@ export default function App() {
         onToggleWishlist={handleToggleWishlist}
         onAddToCart={handleToggleCart}
         isVariantInCart={isVariantInCart}
-        onSelectProduct={(p) => {
-          setSelectedProduct(p);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
+        onSelectProduct={handleSelectProduct}
       />
 
       {/* 7. Footer */}
