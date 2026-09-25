@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Plus } from 'lucide-react';
 import { products } from '../data/products';
 
@@ -22,25 +23,49 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="mx-auto max-w-[1600px] px-6 md:px-10 pt-10 md:pt-16 pb-6 overflow-hidden">
       <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start">
         {/* Left Column: Typography & CTAs */}
-        <div>
-          <div className="inline-flex items-center gap-2 bg-white border border-black/10 rounded-full px-3 py-1 text-[11px] font-bold tracking-widest text-[#111] shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 bg-white border border-black/10 rounded-full px-3 py-1 text-[11px] font-bold tracking-widest text-[#111] shadow-sm"
+          >
             <span className="w-2 h-2 rounded-full bg-[#6C5CFF] animate-pulse" />
             NEW SEASON • SS25 TECH EDIT
-          </div>
+          </motion.div>
 
-          <h1 className="mt-6 text-[44px] md:text-[80px] lg:text-[96px] leading-[0.95] tracking-[-0.03em] font-[800] max-w-full break-words text-[#111]">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 text-[44px] md:text-[80px] lg:text-[96px] leading-[0.95] tracking-[-0.03em] font-[800] max-w-full break-words text-[#111]"
+          >
             TECH
             <br />
             / THAT
             <br />
             <span className="text-[#6C5CFF]">THINKS.</span>
-          </h1>
+          </motion.h1>
 
-          <p className="mt-6 max-w-[520px] text-[16px] md:text-[18px] leading-[1.5] text-black/60">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-6 max-w-[520px] text-[16px] md:text-[18px] leading-[1.5] text-black/60"
+          >
             A curated lab of tools that disappear. Smartphones, speakers, glasses, consoles — edited for obsessives, not algorithms.
-          </p>
+          </motion.p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
             <button
               type="button"
               onClick={onExploreInventory}
@@ -58,17 +83,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <span className="text-[12px] text-black/40 font-medium ml-1">
               ↳ 24 products • free 30-day returns
             </span>
-          </div>
+          </motion.div>
 
           {/* Value props */}
-          <div className="mt-10 grid grid-cols-3 gap-4 max-w-[520px]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-10 grid grid-cols-3 gap-4 max-w-[520px]"
+          >
             {[
               { k: '4.9/5', v: 'Avg rating from 38k reviews' },
               { k: '2YR', v: 'Warranty included, no questions' },
               { k: '$299+', v: 'Free express shipping' },
-            ].map((item) => (
-              <div
+            ].map((item, index) => (
+              <motion.div
                 key={item.k}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
                 className="rounded-[20px] bg-white border border-black/5 p-4 shadow-[0_8px_24px_rgba(0,0,0,0.02)]"
               >
                 <p className="text-[20px] font-[800] tracking-tight text-[#111]">
@@ -77,21 +109,35 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <p className="text-[12px] text-black/60 leading-[1.3] mt-1 font-medium">
                   {item.v}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Right Column: Layered 3D Art Composition */}
+        {/* Right Column: Layered 3D Art Composition with Floating Animations */}
         <div className="relative lg:h-[620px] h-[520px] mt-4 lg:mt-0 overflow-hidden rounded-[32px] max-w-full">
           <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_40%,#6C5CFF18,transparent)]" />
 
           {/* Layer 1: iPhone 15 Pro */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 40, rotate: -4 }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, -8, 0],
+              rotate: [-2, 0, -2]
+            }}
+            transition={{ 
+              opacity: { duration: 0.8, delay: 0.3 },
+              y: { repeat: Infinity, duration: 6, ease: "easeInOut" },
+              rotate: { repeat: Infinity, duration: 8, ease: "easeInOut" }
+            }}
             onClick={() => onSelectProduct(iphone)}
-            className="absolute left-[8%] top-[8%] w-[72%] md:w-[68%] tilt-1 cursor-pointer transition-transform duration-500 hover:rotate-0 hover:scale-105 z-10"
+            className="absolute left-[8%] top-[8%] w-[72%] md:w-[68%] cursor-pointer z-10"
           >
-            <div className="rounded-[32px] bg-white border border-black/10 shadow-[0_30px_80px_rgba(0,0,0,0.12)] p-4">
+            <motion.div 
+              whileHover={{ scale: 1.03, rotate: 0 }}
+              className="rounded-[32px] bg-white border border-black/10 shadow-[0_30px_80px_rgba(0,0,0,0.12)] p-4 transition-shadow hover:shadow-[0_40px_100px_rgba(108,92,255,0.18)]"
+            >
               <div className="rounded-[24px] aspect-[4/3] overflow-hidden bg-black/5 relative">
                 <img
                   src="./hero-images/smartphone-1.jpg"
@@ -118,15 +164,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Layer 2: Ray-Ban Meta Glasses */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 50, rotate: 6 }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, 10, 0],
+              rotate: [3, 5, 3]
+            }}
+            transition={{ 
+              opacity: { duration: 0.8, delay: 0.4 },
+              y: { repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 },
+              rotate: { repeat: Infinity, duration: 9, ease: "easeInOut", delay: 1 }
+            }}
             onClick={() => onSelectProduct(glasses)}
-            className="absolute right-[2%] top-[30%] w-[64%] md:w-[60%] tilt-2 cursor-pointer transition-transform duration-500 hover:rotate-0 hover:scale-105 z-20"
+            className="absolute right-[2%] top-[30%] w-[64%] md:w-[60%] cursor-pointer z-20"
           >
-            <div className="rounded-[32px] bg-[#111] text-white border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.25)] p-4">
+            <motion.div 
+              whileHover={{ scale: 1.03, rotate: 0 }}
+              className="rounded-[32px] bg-[#111] text-white border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.25)] p-4 transition-shadow hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)]"
+            >
               <div className="rounded-[24px] aspect-[4/3] overflow-hidden bg-white/5 relative">
                 <img
                   src="./hero-images/meta-glasses.jpg"
@@ -143,15 +203,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   NEW
                 </span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Layer 3: Audio Week badge card */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 60, rotate: -3 }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, -12, 0],
+              rotate: [-2, 2, -2]
+            }}
+            transition={{ 
+              opacity: { duration: 0.8, delay: 0.5 },
+              y: { repeat: Infinity, duration: 6.5, ease: "easeInOut", delay: 2 },
+              rotate: { repeat: Infinity, duration: 8.5, ease: "easeInOut", delay: 2 }
+            }}
             onClick={onExploreSale}
-            className="absolute left-[20%] bottom-[4%] w-[58%] md:w-[52%] tilt-3 cursor-pointer transition-transform duration-500 hover:rotate-0 hover:scale-105 z-30"
+            className="absolute left-[20%] bottom-[4%] w-[58%] md:w-[52%] cursor-pointer z-30"
           >
-            <div className="rounded-[32px] bg-[#E8FF5A] border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-3">
+            <motion.div 
+              whileHover={{ scale: 1.03, rotate: 0 }}
+              className="rounded-[32px] bg-[#E8FF5A] border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-3 transition-shadow hover:shadow-[0_30px_80px_rgba(232,255,90,0.3)]"
+            >
               <div className="rounded-[20px] aspect-[1/1] overflow-hidden bg-black/5 relative">
                 <img
                   src="./hero-images/headphones.jpg"
@@ -165,16 +239,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   WH-1000XM5 + more • up to 40% off
                 </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Scroll Down Badge */}
-          <div className="absolute right-2 top-[55%] hidden md:flex w-[88px] h-[88px] rounded-full bg-white border border-black/10 shadow-xl items-center justify-center pointer-events-none z-30">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="absolute right-2 top-[55%] hidden md:flex w-[88px] h-[88px] rounded-full bg-white border border-black/10 shadow-xl items-center justify-center pointer-events-none z-30"
+          >
             <div className="text-center leading-none">
               <p className="text-[11px] font-bold tracking-widest text-[#111]">SCROLL</p>
-              <p className="text-[22px] text-[#111] mt-0.5">↓</p>
+              <motion.p 
+                animate={{ y: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                className="text-[22px] text-[#111] mt-0.5"
+              >
+                ↓
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
